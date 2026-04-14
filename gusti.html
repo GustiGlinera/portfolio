@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Gusti Izza | Digital Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background: #050914;
+    color: #edf2ff;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.5;
+    scroll-behavior: smooth;
+  }
+
+  /* custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0f172a;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #6366f1, #a855f7);
+    border-radius: 10px;
+  }
+
+  /* GLASS NAVIGATION */
+  .glass-nav {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1150px;
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(16px);
+    border-radius: 2rem;
+    padding: 0.8rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    transition: all 0.3s;
+  }
+
+  .logo {
+    font-size: 1.6rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #c084fc, #6366f1);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: -0.5px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .nav-links a {
+    color: #cbd5e6;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.2s;
+    font-size: 0.95rem;
+  }
+
+  .nav-links a:hover {
+    color: white;
+    text-shadow: 0 0 6px #a855f7;
+  }
+
+  /* HERO SECTION with animated gradient */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(circle at 10% 20%, rgba(99,102,241,0.15) 0%, rgba(5,9,20,1) 80%);
+  }
+
+  .hero-content {
+    z-index: 2;
+    padding: 0 1.5rem;
+  }
+
+  .hero h1 {
+    font-size: 3.8rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #ffffff, #c084fc, #a855f7);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shimmer 4s linear infinite;
+    margin-bottom: 0.8rem;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .hero-tag {
+    font-size: 1.3rem;
+    color: #94a3b8;
+    margin-bottom: 1.2rem;
+    letter-spacing: 1px;
+  }
+
+  .btn-glow {
+    margin-top: 1rem;
+    padding: 12px 32px;
+    border: none;
+    border-radius: 40px;
+    background: linear-gradient(95deg, #6366f1, #a855f7);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.25s;
+    box-shadow: 0 0 12px rgba(99,102,241,0.6);
+    font-size: 1rem;
+  }
+
+  .btn-glow:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #a855f7;
+  }
+
+  /* Floating orbs (modern effect) */
+  .orb {
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    background: radial-gradient(circle, rgba(99,102,241,0.3), transparent);
+    border-radius: 50%;
+    filter: blur(60px);
+    z-index: 0;
+    animation: float 12s infinite alternate;
+  }
+
+  .orb1 { top: -50px; left: -80px; }
+  .orb2 { bottom: 0px; right: -60px; background: radial-gradient(circle, rgba(168,85,247,0.3), transparent); animation-duration: 16s; }
+
+  @keyframes float {
+    0% { transform: translateY(0px) translateX(0px);}
+    100% { transform: translateY(40px) translateX(20px);}
+  }
+
+  /* SECTION STYLE */
+  section {
+    padding: 90px 24px;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    display: inline-block;
+    background: linear-gradient(120deg, #e0e7ff, #c084fc);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    border-left: 4px solid #a855f7;
+    padding-left: 1rem;
+  }
+
+  /* MODERN CARDS (glassmorphic) */
+  .glass-card {
+    background: rgba(17, 24, 39, 0.65);
+    backdrop-filter: blur(8px);
+    border-radius: 2rem;
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    padding: 2rem;
+    transition: all 0.35s ease;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+  }
+
+  .glass-card:hover {
+    border-color: rgba(168, 85, 247, 0.6);
+    transform: translateY(-5px);
+    background: rgba(17, 24, 39, 0.8);
+  }
+
+  /* About layout modern */
+  .about-grid {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .about-img {
+    flex: 1;
+    min-width: 180px;
+    text-align: center;
+  }
+
+  .about-img img {
+    width: 170px;
+    height: 170px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #a855f7;
+    box-shadow: 0 12px 28px rgba(168,85,247,0.3);
+    transition: 0.3s;
+  }
+
+  .about-img img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 20px 35px rgba(99,102,241,0.4);
+  }
+
+  .about-text {
+    flex: 2;
+  }
+
+  .about-text p {
+    color: #cbd5e1;
+    line-height: 1.6;
+    font-size: 1.05rem;
+  }
+
+  /* Skills with modern progress */
+  .skills-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+  }
+
+  .skill-item {
+    width: 100%;
+  }
+
+  .skill-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+
+  .skill-bar-bg {
+    background: #1e293b;
+    border-radius: 100px;
+    height: 10px;
+    overflow: hidden;
+  }
+
+  .skill-progress {
+    background: linear-gradient(90deg, #6366f1, #c084fc);
+    width: 0%;
+    height: 100%;
+    border-radius: 100px;
+    transition: width 1s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+  }
+
+  /* Projects grid modern */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.8rem;
+    margin-top: 1rem;
+  }
+
+  .project-card {
+    background: #0f172a;
+    border-radius: 1.5rem;
+    padding: 1.8rem;
+    transition: all 0.25s;
+    border: 1px solid #1e293b;
+  }
+
+  .project-card:hover {
+    border-color: #6366f1;
+    transform: translateY(-8px);
+    background: #111827;
+  }
+
+  .project-icon {
+    font-size: 2.4rem;
+    margin-bottom: 1rem;
+    color: #a855f7;
+  }
+
+  .project-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .project-card p {
+    color: #9ca3af;
+    font-size: 0.9rem;
+  }
+
+  /* Contact modern style */
+  .contact-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .contact-info {
+    flex: 1;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    background: #0f172a80;
+    padding: 0.8rem 1.2rem;
+    border-radius: 2rem;
+    backdrop-filter: blur(4px);
+    transition: 0.2s;
+  }
+
+  .contact-item i {
+    font-size: 1.5rem;
+    color: #a855f7;
+    width: 35px;
+  }
+
+  .contact-item span {
+    font-weight: 500;
+    color: #e2e8f0;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .social-circle {
+    background: #1e293b;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: 0.2s;
+    color: #cbd5e1;
+    font-size: 1.4rem;
+  }
+
+  .social-circle:hover {
+    background: #a855f7;
+    color: white;
+    transform: scale(1.08);
+  }
+
+  /* footer */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    border-top: 1px solid #1e293b;
+    background: #02061770;
+    color: #6c7a91;
+    font-size: 0.85rem;
+  }
+
+  /* responsive */
+  @media (max-width: 700px) {
+    .glass-nav {
+      padding: 0.6rem 1.5rem;
+      width: 94%;
+    }
+    .nav-links {
+      gap: 1rem;
+    }
+    .hero h1 {
+      font-size: 2.2rem;
+    }
+    .section-title {
+      font-size: 1.8rem;
+    }
+    .about-grid {
+      flex-direction: column;
+      text-align: center;
+    }
+    .contact-flex {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>
+</head>
+<body>
+
+<nav class="glass-nav">
+  <div class="logo">✦ GUSTI</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#skill">Skills</a>
+    <a href="#project">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="hero-content">
+    <h1>Gusti Izza Ardiansyah</h1>
+    <div class="hero-tag">✦ Pelajar | Future Fullstack ✦</div>
+    <p style="max-width: 550px; margin: 0 auto; color: #b9c3db;">Membangun solusi digital, satu kode pada satu waktu.</p>
+    <a href="#project"><button class="btn-glow">✨ Jelajahi Karya ✨</button></a>
+  </div>
+</header>
+
+<section id="about">
+  <div class="container">
+    <div class="glass-card">
+      <h2 class="section-title">Tentang Saya</h2>
+      <div class="about-grid">
+        <div class="about-img">
+          <img src="https://i.pinimg.com/736x/cb/52/f6/cb52f69ae2b8f6360f9f9ace21ca6b02.jpg" alt="Gusti Izza">
+        </div>
+        <div class="about-text">
+          <p>Halo! Saya <strong>Gusti Izza Ardiansyah Alba'i</strong>, seorang pelajar dengan semangat tinggi di dunia teknologi & pengembangan web. Saya percaya bahwa desain dan fungsionalitas berjalan beriringan. Saat ini saya fokus mendalami JavaScript modern, framework, dan pengalaman pengguna yang imersif.</p>
+          <p style="margin-top: 1rem;">Selain coding, saya suka mengeksplorasi teknologi baru, mendesain antarmuka yang estetik, dan membangun proyek-proyek kecil yang berdampak. Mari berkolaborasi!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skill">
+  <div class="container">
+    <div class="glass-card">
+      <h2 class="section-title">Keahlian & Tools</h2>
+      <div class="skills-wrapper">
+        <div class="skill-item">
+          <div class="skill-header"><span>HTML5</span><span>90%</span></div>
+          <div class="skill-bar-bg"><div class="skill-progress" style="width: 90%;"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span>CSS3</span><span>85%</span></div>
+          <div class="skill-bar-bg"><div class="skill-progress" style="width: 85%;"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span>JavaScript</span><span>70%</span></div>
+          <div class="skill-bar-bg"><div class="skill-progress" style="width: 70%;"></div></div>
+        </div>
+        
+        
+      <div style="margin-top: 1.5rem; display: flex; gap: 0.8rem; flex-wrap: wrap;">
+        <span style="background:#1e293b; padding:5px 14px; border-radius:40px; font-size:0.8rem;">🎨 UI/UX</span>
+        <span style="background:#1e293b; padding:5px 14px; border-radius:40px; font-size:0.8rem;">📱 Responsive Design</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="project">
+  <div class="container">
+    <div class="glass-card">
+      <h2 class="section-title">✨ Proyek Unggulan ✨</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-icon"><i class="fas fa-school"></i></div>
+          <h3>Website Sekolah Modern</h3>
+          <p>Platform informasi sekolah dengan jadwal, galeri, dan pengumuman dinamis. Desain responsif dan aksesibel.</p>
+          <div style="margin-top: 1rem; font-size: 0.75rem; color:#818cf8;">HTML, Tailwind, JS</div>
+        </div>
+        <div class="project-card">
+          <div class="project-icon"><i class="fas fa-cash-register"></i></div>
+          <h3>Aplikasi Kasir Pro</h3>
+          <p>Sistem kasir berbasis web dengan manajemen produk, hitung total diskon, dan cetak struk sederhana.</p>
+          <div style="margin-top: 1rem; font-size: 0.75rem; color:#818cf8;">React + LocalStorage</div>
+        </div>
+        <div class="project-card">
+          <div class="project-icon"><i class="fas fa-globe"></i></div>
+          <h3>Landing Page Kreatif</h3>
+          <p>Landing page untuk agency modern dengan animasi halus, performa cepat, dan optimasi SEO.</p>
+          <div style="margin-top: 1rem; font-size: 0.75rem; color:#818cf8;">CSS Grid, GSAP</div>
+        </div>
+        <div class="project-card">
+          <div class="project-icon"><i class="fas fa-cloud-moon"></i></div>
+          <h3>Weather Dashboard</h3>
+          <p>Aplikasi cuaca real-time dengan fetching API, menampilkan suhu, kelembapan, dan rekomendasi aktivitas.</p>
+          <div style="margin-top: 1rem; font-size: 0.75rem; color:#818cf8;">JS Fetch, OpenWeather</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="glass-card">
+      <h2 class="section-title">📬 Hubungi Saya</h2>
+      <div class="contact-flex">
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <span>gustiizza9@gmail.com</span>
+          </div>
+          <div class="contact-item">
+            <i class="fab fa-instagram"></i>
+            <span>@glinera16</span>
+          </div>
+          
+          <div class="social-links">
+            <a href="#" class="social-circle"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-circle"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-circle"><i class="fab fa-discord"></i></a>
+          </div>
+        </div>
+        <div style="flex:1; background:#0f172a60; border-radius: 1.5rem; padding: 1.2rem; text-align: center;">
+          <i class="fas fa-paper-plane" style="font-size: 2rem; color:#a855f7;"></i>
+          <p style="margin-top: 0.5rem;">Tersedia untuk kolaborasi & proyek menarik ✨</p>
+          <p style="font-size:0.8rem; color:#94a3b8;">#buildthefuture</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Gusti Izza Ardiansyah Alba'i — Dibuat dengan <i class="fas fa-heart" style="color:#a855f7;"></i> dan kode modern</p>
+</footer>
+
+<!-- simple intersection observer for skill bars (modern touch) -->
+<script>
+  // animate skill bars when they come into view
+  const skillBars = document.querySelectorAll('.skill-progress');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) {
+        const bar = entry.target;
+        const width = bar.style.width;
+        if(width && width !== '0%') {
+          // sudah di set inline, tetapi untuk memastikan animasi terjadi kita set ulang sedikit
+          bar.style.transition = 'width 1s cubic-bezier(0.2, 0.9, 0.4, 1.1)';
+          // trigger reflow jika diperlukan: sudah memiliki width inline dari html
+        }
+        observer.unobserve(bar);
+      }
+    });
+  }, { threshold: 0.4 });
+  skillBars.forEach(bar => observer.observe(bar));
+
+  // smooth scrolling for nav links
+  document.querySelectorAll('.nav-links a, .btn-glow').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if(targetId && targetId !== '#' && targetId.startsWith('#')) {
+        e.preventDefault();
+        const targetElement = document.querySelector(targetId);
+        if(targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  });
+
+  // Tambahan efek hover modern untuk tombol hero (opsional)
+  const btnHero = document.querySelector('.btn-glow');
+  if(btnHero) {
+    btnHero.addEventListener('mouseenter', () => {
+      btnHero.style.transform = 'scale(1.02)';
+    });
+    btnHero.addEventListener('mouseleave', () => {
+      btnHero.style.transform = 'scale(1)';
+    });
+  }
+
+  // Dynamic copyright year auto update (meskipun 2026 manual tapi tetap dinamis)
+  const footerYear = document.querySelector('footer p');
+  if(footerYear) {
+    const currentYear = new Date().getFullYear();
+    if(currentYear !== 2026) {
+      footerYear.innerHTML = `© ${currentYear} Gusti Izza Ardiansyah Alba'i — Dibuat dengan <i class="fas fa-heart" style="color:#a855f7;"></i> dan kode modern`;
+    }
+  }
+</script>
+</body>
+</html>
